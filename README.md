@@ -2,6 +2,8 @@
 
 This is primarily a toy project to teach myself about React and Redux. The outcome will be a simple single page web app that enables Australian citizens to request data held about them under the Australian Privacy Act by the Australian federal Police.
 
+[![Build Status](https://travis-ci.org/davesag/apa-data-requester.svg?branch=master)](https://travis-ci.org/davesag/apa-data-requester)
+
 ## Background
 
 The [Australian Privacy Act](https://www.oaic.gov.au/privacy-law/privacy-act/) allows Australian citizens to access personal information held about themselves by Australian companies and government agencies including the Australian Federal Police. You can request documents such as criminal records, investigation records and other data (with a few exceptions). To access these documents you simply lodge a `Privacy Request` with the Australian Federal Police. This can be done by emailing [privacy@afp.gov.au](mailto:privacy@afp.gov.au) with the following information:
