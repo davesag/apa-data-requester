@@ -1,9 +1,10 @@
 {
   "name": "apa-data-requester",
   "version": "0.0.1",
-  "description": "A simple single-page web app that enables Australian citizens to request data held about them under the Australian Privacy Act by the Australian federal Police",
+  "description": "A server to support a simple single-page web app that enables Australian citizens to request data held about them under the Australian Privacy Act by the Australian federal Police",
   "main": "index.js",
   "scripts": {
+    "start": "babel-node index.js",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js  --recursive",
     "test:debug": "npm run test -- --debug-brk",
     "test:watch": "npm run test -- --watch"
@@ -41,6 +42,7 @@
   },
   "dependencies": {
     "immutable": "^3.7.6",
-    "redux": "^3.4.0"
+    "redux": "^3.4.0",
+    "socket.io": "^1.4.5"
   }
 }
