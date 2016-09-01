@@ -1,42 +1,46 @@
-import {Map, fromJS} from 'immutable';
+import {Map, List, fromJS} from 'immutable';
 import {expect} from 'chai';
+import sinon from 'sinon';
 
-import reducer from '../src/reducer';
-
-import {Actions} from '../src/actions';
-import {startLoadingData, loadedData, INITIAL_STATE} from '../src/core';
+import * as Actions from '../../src/actions';
+import proxyquire from 'proxyquire';
+proxyquire.noPreserveCache(); // see the proxyquire readme.
 
 describe('reducer', () => {
+  const INITIAL_STATE = Map();
+
+  const coreStub = {
+    INITIAL_STATE
+  };
+
+  let reducer = proxyquire('../../src/reducer', {
+    './core': coreStub
+  });
 
   it('has an initial state', () => {
-    const nextState = reducer();
-
-    expect(nextState).to.equal(INITIAL_STATE);
+    expect(reducer()).to.equal(INITIAL_STATE);
   });
 
-  it('handles DATA_LOAD', () => {
-    const initialState = INITIAL_STATE;
-    const action = {
-      type: Actions.DATA_LOAD
-    };
-    const nextState = reducer(initialState, action);
-
-    expect(nextState).to.equal(Map({
-      loading: true
-    }));
-  });
-
-  it('handles DATA_LOADED', () => {
-    const initialState = INITIAL_STATE;
-    const action = {
-      type: Actions.DATA_LOADED,
-      data: 'test'
-    };
-    const nextState = reducer(initialState, action);
-
-    expect(nextState).to.equal(Map({
-      loading: false
-    }));
-  });
+  // describe('handling DATA_LOADED', () => {
+  //   let loadedSpy;
+  //   const data = {test: 'just a test'};
+  //
+  //   beforeEach(() => {
+  //     const action = {
+  //       type: Actions.DATA_LOADED,
+  //       payload: data
+  //     };
+  //     loadedSpy = sinon.stub(coreStub, 'loadedData');
+  //     reducer(INITIAL_STATE, action);
+  //   });
+  //
+  //   afterEach(() => {
+  //     coreStub.loadedData.restore();
+  //   })
+  //
+  //   it('calls loadedData', () => {
+  //     expect(loadedSpy).to.have.been.calledWith(INITIAL_STATE, data);
+  //   });
+  // });
 
 });
