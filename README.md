@@ -39,14 +39,28 @@ This is, at heart, a toy project, whose aim is to teach myself to use Redux and 
 
 ## Pre-requisites
 
-* [NodeJS 5.1] or better. `brew install node` or even better use [NVM](https://github.com/creationix/nvm) and `nvm install 5.1`
+* [NodeJS 6.5.0] or better. `brew install node` or even better use [NVM](https://github.com/creationix/nvm) and `nvm install 6.5.0`
 
 Run `npm install` to install all the dependencies.
 
 ## To test
 
+Both the unit and the integration tests
+
+```sh
+npm run test:all
+```
+
+Just the unit tests
+
 ```sh
 npm test
+```
+
+just the integration tests
+
+```sh
+npm run test:integration
 ```
 
 ## To debug
