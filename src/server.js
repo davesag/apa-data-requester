@@ -8,10 +8,6 @@ import stateFilter   from './stateFilter';
 
 const PORT        = process.env.PORT || 3000;
 
-process.on('unhandledRejection', function(reason, p) {
-  console.log("Unhandled Rejection at: Promise ", p, " reason: ", reason);
-});
-
 const start = function() {
   return new Promise((resolve, reject) => {
 
@@ -33,7 +29,8 @@ const start = function() {
           }
         });
 
-        const disconnectionHandler = () => {
+        const disconnectHandler = () => {
+          console.log('Disconnecting', id);
           store.dispatch(disconnected(id));
           unsubscribe();
         };
@@ -51,7 +48,7 @@ const start = function() {
         };
 
         socket.on('action', actionHandler);
-        socket.on('disconnection', disconnectionHandler);
+        socket.on('disconnect', disconnectHandler);
         socket.on('error', errorHandler);
         store.dispatch(connected(id, io));
       };

@@ -1,4 +1,4 @@
-import {List} from 'immutable';
+import {Map} from 'immutable';
 import {INITIAL_STATE} from './core';
 import * as Actions from './actions';
 
@@ -16,9 +16,7 @@ const reducer = function(state = INITIAL_STATE, action) {
     }
     case Actions.DISCONNECTED: {
       const connections = state.get('connections');
-      const index = connections.indexOf(action.id);
-      if (index === -1) return state;
-      const newConnections = connections.delete(index);
+      const newConnections = connections.delete(action.id);
       return state.set('connections', newConnections);
     }
   }

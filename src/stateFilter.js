@@ -13,7 +13,7 @@ const stateFilter = (store, _connectionId) => {
   const connections = state.get('connections');
 
   return {
-    connectionCount: !!connections ? connections.size() : 0
+    connectionCount: !!connections ? connections.size : 0
   };
 };
 

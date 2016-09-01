@@ -1,6 +1,9 @@
 require('dotenv').config({silent: true});
-
 import {start} from './src/server';
+
+process.on('unhandledRejection', (reason, p) => {
+  console.log("Unhandled rejection in Promise ", p, "because", reason);
+});
 
 const name = 'Action Server';
 
